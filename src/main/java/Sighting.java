@@ -9,39 +9,34 @@ import java.util.TimerTask;
 
 public class Sighting {
   private int animal_id;
-  private String location;
-  private String ranger_name;
   private int id;
   private Timestamp last_sighting;
-  private String animal_name;
+  private int ranger_id;
+  private int location_id;
 
-  public Sighting(int animal_id, String location, String ranger_name, String animal_name) {
+  public Sighting(int animal_id, int ranger_id, int location_id) {
     this.animal_id = animal_id;
-    this.location = location;
-    this.ranger_name = ranger_name;
     this.id = id;
-    this.animal_name = animal_name;
+    this.ranger_id = ranger_id;
+    this.location_id = location_id;
   }
 
   public int getId() {
-    return id;
+    return this.id;
   }
 
   public int getAnimalId() {
-    return animal_id;
+    return this.animal_id;
   }
 
-  public String getLocation() {
-    return location;
-  }
+  public int getRangerId() {
+      return this.ranger_id;
+    }
 
-  public String getRangerName() {
-    return ranger_name;
-  }
+    public int getLocationid() {
+      return this.location_id;
+    }
 
-  public String getAnimalName() {
-    return animal_name;
-  }
 
   public String getLastSighting() {
     String lastSighting = last_sighting.toString();
@@ -74,12 +69,11 @@ public class Sighting {
 
     public void save() {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "INSERT INTO sightings (animal_id, location, ranger_name, last_sighting, animal_name) VALUES (:animal_id, :location, :ranger_name, now(), :animal_name);";
+        String sql = "INSERT INTO sightings (animal_id, last_sighting, ranger_id, location_id) VALUES (:animal_id, now(), :ranger_id, :location_id);";
         this.id = (int) con.createQuery(sql, true)
         .addParameter("animal_id", this.animal_id)
-        .addParameter("location", this.location)
-        .addParameter("ranger_name", this.ranger_name)
-        .addParameter("animal_name", this.animal_name)
+        .addParameter("ranger_id", this.ranger_id)
+        .addParameter("location_id", this.location_id)
         .throwOnMappingFailure(false)
         .executeUpdate()
         .getKey();
@@ -92,7 +86,7 @@ public class Sighting {
         return false;
       } else {
         Sighting newSighting = (Sighting) otherSighting;
-        return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
+        return this.getAnimalId() == (newSighting.getAnimalId());
       }
     }
 
