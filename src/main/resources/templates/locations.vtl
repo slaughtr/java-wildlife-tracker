@@ -1,0 +1,44 @@
+<!-- begin locations.vtl -->
+
+<div class="container">
+  <div class="well well-sm">
+    <strong>Display</strong>
+    <div class="btn-group">
+      <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+      </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+        class="glyphicon glyphicon-th"></span>Grid</a>
+      </div>
+    </div>
+    #foreach ($location in $locations)
+    <div id="products" class="row list-group">
+      <div class="item  col-xs-4 col-lg-4">
+        <div class="thumbnail">
+          <img class="group list-group-image" src="https://static4.fjcdn.com/comments/Cat+race+location+trying+to+regain+memories+not+from+d+amp+d+planet+_ad046ce96a5ddd8411d999e7b36ae87a.png" alt="" />
+          <div class="caption">
+            <h4 class="group inner list-group-item-heading">
+              $location.getName()</h4>
+              <p class="group inner list-group-item-text">
+                You can contact Ranger $location.getName() at their email: $location.getEmail()</p>
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <p class="lead">
+                      #foreach ($station in $stations)
+                      #if ($station.getId() == $location.getStationId())
+                      $station.getName()
+                      #end
+                      <!-- $stations.find($location.getStationId()) I DON'T KNOW WHY THIS DOESN'T WORK?!-->
+                      #end
+                    </p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                      <a class="btn btn-success" href="/locations/$location.getId()">More info</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          #end
+        </div>
+
+<!-- end locations.vtl -->

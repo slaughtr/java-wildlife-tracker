@@ -1,0 +1,61 @@
+<!-- begin ranger.vtl -->
+<div class="container">
+<div class="col-md-4">
+<img src="https://static4.fjcdn.com/comments/Cat+race+ranger+trying+to+regain+memories+not+from+d+amp+d+planet+_ad046ce96a5ddd8411d999e7b36ae87a.png">
+<h2>Ranger $ranger.getName()</h2>
+<h3>Contact: $ranger.getEmail()</h3>
+<h3>Station:                       #foreach ($station in $stations)
+  #if ($station.getId() == $ranger.getStationId())
+  $station.getName()
+  #end
+  <!-- $stations.find($ranger.getStationId()) I DON'T KNOW WHY THIS DOESN'T WORK?!-->
+  #end</h3>
+</div>
+<div class="col-md-5">
+  <h2>Animal sightings by $ranger.getName()</h2>
+  <ul>
+  #foreach ($sighting in $ranger.getRangerSightings())
+  <li>$sighting.getAnimalName() - $sighting.getLocationName() - @ $sighting.getLastSighting()
+  #end
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+  <!--
+  TODO: COME BACK TO THIS AND MAKE IT WORK
+  <style>
+  #map {
+  height: 400px;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+<h3>My Google Maps Demo</h3>
+<div id="map"></div>
+<script>
+function initMap() {
+var uluru = {#foreach ($station in $stations)
+#if ($station.getId() == $ranger.getStationId())
+lat: $station.getCoordinates().substring(0,8), lng: $station.getCoordinate().substring(10,21)};
+#end
+#end
+var map = new google.maps.Map(document.getElementById('map'), {
+zoom: 4,
+center: uluru
+});
+var marker = new google.maps.Marker({
+position: uluru,
+map: map
+});
+}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfhM1oRGrQZ9x5krOXUPU3jSKs0u7wOC8&callback=initMap">
+</script> -->
+<!-- end ranger.vtl -->

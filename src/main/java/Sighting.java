@@ -29,12 +29,20 @@ public class Sighting {
     return this.animal_id;
   }
 
+  public String getAnimalName() {
+    return Animal.find(this.animal_id).getName();
+  }
+
   public int getRangerId() {
       return this.ranger_id;
     }
 
     public int getLocationid() {
       return this.location_id;
+    }
+
+    public String getLocationName() {
+      return Location.find(this.location_id).getName();
     }
 
 

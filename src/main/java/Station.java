@@ -39,6 +39,10 @@ public class Station {
     return this.location_id;
   }
 
+  public String getLocationName() {
+    return Location.find(this.location_id).getName();
+  }
+
   public void updateName(String name) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE stations SET name=:name WHERE id=:id;";
@@ -46,6 +50,16 @@ public class Station {
       .addParameter("id", id)
       .addParameter("name", name)
       .executeUpdate();
+    }
+  }
+
+  public List<Ranger> getStationRangers() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM rangers WHERE station_id = :id";
+      List<Ranger> rangers = con.createQuery(sql)
+      .addParameter("id", this.id)
+      .executeAndFetch(Ranger.class);
+      return rangers;
     }
   }
 
