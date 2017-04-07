@@ -15,7 +15,7 @@ public class Station {
 
   public static final int MAX_RANGERS = 6;
 
-  public Station(String name, int location_id) {
+  public Station(String name, String coordinates, int location_id) {
     this.name = name;
     this.location_id = location_id;
     this.coordinates = coordinates;

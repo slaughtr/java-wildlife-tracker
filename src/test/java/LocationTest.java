@@ -15,13 +15,13 @@ public class LocationTest {
   public DatabaseRule database = new DatabaseRule();
 
   @Test
-  public void animal_instantiatesCorrectly_true() {
+  public void location_instantiatesCorrectly_true() {
     Location testLocation = new Location("Yosemite Park");
     assertEquals(true, testLocation instanceof Location);
   }
 
   @Test
-  public void getName_animalInstantiatesWithName_Deer() {
+  public void getName_locationInstantiatesWithName_Deer() {
     Location testLocation = new Location("Yosemite Park");
     assertEquals("Yosemite Park", testLocation.getName());
   }
@@ -66,5 +66,18 @@ public class LocationTest {
     testLocation.save();
     testLocation.delete();
     assertEquals(0, Location.all().size());
+  }
+
+  @Test
+  public void update_updatesNameAttribute_true() {
+    Location testLocation = new Location("Yosemite Park");
+    testLocation.save();
+    testLocation.updateName("Yellowstone Park");
+    assertEquals("Yellowstone Park", Location.find(testLocation.getId()).getName());
+  }
+
+  @Test
+  public void find_returnsNullWhenNoLocationFound_null() {
+    assertTrue(Location.find(999) == null);
   }
 }

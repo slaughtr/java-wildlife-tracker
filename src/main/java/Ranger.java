@@ -69,6 +69,8 @@ public class Ranger {
       String sql = "INSERT INTO rangers (name, email, station_id) VALUES (:name, :email, :station_id);";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
+      .addParameter("email", this.email)
+      .addParameter("station_id", this.station_id)
       .executeUpdate()
       .getKey();
     }
