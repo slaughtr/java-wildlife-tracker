@@ -29,12 +29,24 @@ public class Sighting {
     return this.animal_id;
   }
 
+  public String getAnimalHealth() {
+    return Animal.find(this.animal_id).getHealth();
+  }
+
+  public String getAnimalAge() {
+    return Animal.find(this.animal_id).getAge();
+  }
+
   public String getAnimalName() {
     return Animal.find(this.animal_id).getName();
   }
 
   public int getRangerId() {
       return this.ranger_id;
+    }
+
+    public String getRangerName() {
+      return Ranger.find(this.ranger_id).getName();
     }
 
     public int getLocationid() {

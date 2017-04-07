@@ -63,6 +63,10 @@ public class EndangeredAnimal extends Creature {
     }
   }
 
+  public int getNumberOfSightings() {
+    return getSightings().size();
+  }
+
   public static List<EndangeredAnimal> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM endangered_animals;";

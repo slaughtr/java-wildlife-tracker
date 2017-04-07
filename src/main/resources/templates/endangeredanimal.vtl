@@ -1,0 +1,81 @@
+<!-- begin endangeredendangeredanimal.vtl -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="../../js/navbar.js"></script>
+<link rel="stylesheet" href="../../css/navbar.css">
+<script type="text/javascript" src="../../js/gridlist.js"></script>
+<link rel="stylesheet" href="../../css/gridlist.css">
+<link rel="stylesheet" href="../../css/app.css">
+<div class="container">
+  <div class="row">
+<div class="col-md-4">
+<h2>Animal: $endangeredanimal.getName()</h2>
+<h3>They have been seen $endangeredanimal.getNumberOfSightings() times!</h3>
+<h3>Sightings:
+  <ul>
+#foreach ($sighting in $endangeredanimal.getSightings())
+<li>The $endangeredanimal.getName() looked: $sighting.getAnimalHealth()</li>
+<li>They also appeared to be: $sighting.getAnimalAge()</li>
+  #end
+</ul>
+</h3>
+</div>
+<div class="col-md-5">
+  <h2>Locations the $endangeredanimal.getName() was seen:</h2>
+  <ul>
+  #foreach ($sighting in $endangeredanimal.getSightings())
+  <ul>
+  <li>$sighting.getLocationName()</li>
+  #end
+</ul>
+</div>
+</div>
+<div class="row">
+  <h2>Rangers who have seen $endangeredanimal.getName()</h2>
+  <ul>
+    #foreach ($sighting in $endangeredanimal.getSightings())
+<li>$sighting.getRangerName()</li>
+#end
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+  <!--
+  TODO: COME BACK TO THIS AND MAKE IT WORK
+  <style>
+  #map {
+  height: 400px;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+<h3>My Google Maps Demo</h3>
+<div id="map"></div>
+<script>
+function initMap() {
+var uluru = {#foreach ($station in $stations)
+#if ($station.getId() == $endangeredendangeredanimal.getStationId())
+lat: $station.getCoordinates().substring(0,8), lng: $station.getCoordinate().substring(10,21)};
+#end
+#end
+var map = new google.maps.Map(document.getElementById('map'), {
+zoom: 4,
+center: uluru
+});
+var marker = new google.maps.Marker({
+position: uluru,
+map: map
+});
+}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfhM1oRGrQZ9x5krOXUPU3jSKs0u7wOC8&callback=initMap">
+</script> -->
+<!-- end endangeredendangeredanimal.vtl -->

@@ -178,9 +178,9 @@ public class App {
 
     get("/animals/endangered", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/animals.vtl");
+      model.put("template", "templates/endangeredanimals.vtl");
       model.put("animals", Animal.all());
-      model.put("endangeredAnimals", EndangeredAnimal.all());
+      model.put("endangeredanimals", EndangeredAnimal.all());
       model.put("sightings", Sighting.all());
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -188,7 +188,7 @@ public class App {
 
     get("/animals/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/station.vtl");
+      model.put("template", "templates/animal.vtl");
       Animal animal = Animal.find(Integer.parseInt(request.params("id")));
       model.put("animal", animal);
       model.put("rangers", Ranger.all());
@@ -199,9 +199,9 @@ public class App {
 
     get("/animals/endangered/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/station.vtl");
+      model.put("template", "templates/endangeredanimal.vtl");
       EndangeredAnimal endangeredAnimal = EndangeredAnimal.find(Integer.parseInt(request.params("id")));
-      model.put("endangeredAnimal", endangeredAnimal);
+      model.put("endangeredanimal", endangeredAnimal);
       model.put("rangers", Ranger.all());
       model.put("stations", Station.all());
       model.put("locations", Location.all());
