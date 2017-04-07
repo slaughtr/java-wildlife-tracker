@@ -22,7 +22,13 @@
                 <div class="row">
                   <div class="col-xs-12 col-md-6">
                     <p class="lead">
-                      $stations.find($ranger.getStationId()).getName()</p>
+                      #foreach ($station in $stations)
+                      #if ($station.getId() == $ranger.getStationId())
+                      $station.getName()
+                      #end
+                      <!-- $stations.find($ranger.getStationId()) I DON'T KNOW WHY THIS DOESN'T WORK?!-->
+                      #end
+                    </p>
                     </div>
                     <div class="col-xs-12 col-md-6">
                       <a class="btn btn-success" href="/rangers/$ranger.getId()">More info</a>

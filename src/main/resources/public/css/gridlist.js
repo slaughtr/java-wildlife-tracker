@@ -20,7 +20,7 @@ export default StyleSheet.create({
         "borderRadius": 0
     },
     "itemlist-group-item": {
-        "float": "none",
+        "float": "left",
         "width": "100%",
         "backgroundColor": "#fff",
         "marginBottom": 10
