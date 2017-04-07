@@ -64,4 +64,12 @@ public class EndangeredAnimalTest {
     assertEquals("Adult", EndangeredAnimal.find(testEndangeredAnimal.getId()).getAge());
   }
 
+  @Test
+  public void update_updatesNameAttribute_true() {
+    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Fox", "Healthy", "Young");
+    testEndangeredAnimal.save();
+    testEndangeredAnimal.updateName("Raccoon");
+    assertEquals("Raccoon", EndangeredAnimal.find(testEndangeredAnimal.getId()).getName());
+  }
+
 }
