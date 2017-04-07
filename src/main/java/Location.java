@@ -42,6 +42,16 @@ public class Location {
     }
   }
 
+  public List<Station> getLocationStations() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM stations WHERE location_id = :id";
+      List<Station> stations = con.createQuery(sql)
+      .addParameter("id", this.id)
+      .executeAndFetch(Station.class);
+      return stations;
+    }
+  }
+
   public static Location find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM locations WHERE id=:id;";
