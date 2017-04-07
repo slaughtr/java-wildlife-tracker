@@ -87,9 +87,12 @@ public class Animal extends Creature {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO animals (name) VALUES (:name);";
+      String sql = "INSERT INTO animals (name, health, age, image_url) VALUES (:name, :health, :age, :image_url);";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
+      .addParameter("health", this.health)
+      .addParameter("age", this.age)
+      .addParameter("image_url", this.image_url)
       .executeUpdate()
       .getKey();
     }
