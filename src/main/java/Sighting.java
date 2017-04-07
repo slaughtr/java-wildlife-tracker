@@ -37,54 +37,56 @@ public class Sighting {
     return ranger_name;
   }
 
-  public Timestamp getLastSighting() {
-    return last_sighting; //TODO: figure out how to make this lastSighting instead
-  }
+  public String getLastSighting() {
+    String lastSighting = last_sighting.toString();
+      return lastSighting; //TODO: figure out how to make this lastSighting instead
+    }
 
-  public static List<Sighting> all() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM sightings;";
-      return con.createQuery(sql)
+
+    public static List<Sighting> all() {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "SELECT * FROM sightings;";
+        return con.createQuery(sql)
         .throwOnMappingFailure(false)
         .executeAndFetch(Sighting.class);
+      }
     }
-  }
 
-  //TODO: ADD UPDATE, DELETE
+    //TODO: ADD UPDATE, DELETE
 
-  public static Sighting find(int id) {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM sightings WHERE id=:id;";
-      Sighting sighting = con.createQuery(sql)
+    public static Sighting find(int id) {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "SELECT * FROM sightings WHERE id=:id;";
+        Sighting sighting = con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Sighting.class);
-      return sighting;
-    } catch (IndexOutOfBoundsException exception) {
-      return null;
+        return sighting;
+      } catch (IndexOutOfBoundsException exception) {
+        return null;
+      }
     }
-  }
 
-  public void save() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO sightings (animal_id, location, ranger_name, last_sighting) VALUES (:animal_id, :location, :ranger_name, now());";
-      this.id = (int) con.createQuery(sql, true)
+    public void save() {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "INSERT INTO sightings (animal_id, location, ranger_name, last_sighting) VALUES (:animal_id, :location, :ranger_name, now());";
+        this.id = (int) con.createQuery(sql, true)
         .addParameter("animal_id", this.animal_id)
         .addParameter("location", this.location)
         .addParameter("ranger_name", this.ranger_name)
         .throwOnMappingFailure(false)
         .executeUpdate()
         .getKey();
+      }
     }
-  }
 
-  @Override
-  public boolean equals(Object otherSighting) {
-    if(!(otherSighting instanceof Sighting)) {
-      return false;
-    } else {
-      Sighting newSighting = (Sighting) otherSighting;
-      return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
+    @Override
+    public boolean equals(Object otherSighting) {
+      if(!(otherSighting instanceof Sighting)) {
+        return false;
+      } else {
+        Sighting newSighting = (Sighting) otherSighting;
+        return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
+      }
     }
-  }
 
-}
+  }
