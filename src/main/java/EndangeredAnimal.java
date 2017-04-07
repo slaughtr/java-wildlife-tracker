@@ -10,6 +10,7 @@ public class EndangeredAnimal extends Creature {
     this.health = health;
     this.age = age;
     this.endangered = true;
+    this.imageUrl = "https://i.imgur.com/rwXStQ0.jpg";
   }
 
   public void updateName(String name) {
@@ -18,10 +19,21 @@ public class EndangeredAnimal extends Creature {
       con.createQuery(sql)
       .addParameter("id", id)
       .addParameter("name", name)
+      .addColumnMapping("image_url", "imageUrl")
       .executeUpdate();
     }
   }
 
+  public void updateImageUrl(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE endangered_animals SET image_url=:imageUrl WHERE id=:id;";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .addParameter("image_url", imageUrl)
+      .addColumnMapping("image_url", "imageUrl")
+      .executeUpdate();
+    }
+  }
 
   public void updateAge(String age) {
     try(Connection con = DB.sql2o.open()) {
@@ -29,6 +41,7 @@ public class EndangeredAnimal extends Creature {
       con.createQuery(sql)
       .addParameter("age", age)
       .addParameter("id", id)
+      .addColumnMapping("image_url", "imageUrl")
       .executeUpdate();
     }
   }
@@ -39,6 +52,7 @@ public class EndangeredAnimal extends Creature {
         con.createQuery(sql)
         .addParameter("id", id)
         .addParameter("health", health)
+        .addColumnMapping("image_url", "imageUrl")
         .executeUpdate();
       }
     }
@@ -57,6 +71,7 @@ public class EndangeredAnimal extends Creature {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM endangered_animals;";
       return con.createQuery(sql)
+      .addColumnMapping("image_url", "imageUrl")
       .executeAndFetch(EndangeredAnimal.class);
     }
   }
@@ -66,6 +81,7 @@ public class EndangeredAnimal extends Creature {
       String sql = "SELECT * FROM endangered_animals WHERE id=:id;";
       EndangeredAnimal endangeredanimal = con.createQuery(sql)
       .addParameter("id", id)
+      .addColumnMapping("image_url", "imageUrl")
       .executeAndFetchFirst(EndangeredAnimal.class);
       return endangeredanimal;
     }
@@ -75,11 +91,13 @@ public class EndangeredAnimal extends Creature {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO endangered_animals (name, health, age) VALUES (:name, :health, :age);";
+      String sql = "INSERT INTO endangered_animals (name, health, age, image_url) VALUES (:name, :health, :age, :imageUrl);";
       this.id = (int) con.createQuery(sql, true)
+      .addColumnMapping("image_url", "imageUrl")
       .addParameter("name", this.name)
       .addParameter("health", this.health)
       .addParameter("age", this.age)
+      .addParameter("imageUrl", this.imageUrl)
       .executeUpdate()
       .getKey();
     }

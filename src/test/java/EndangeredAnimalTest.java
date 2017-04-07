@@ -72,4 +72,19 @@ public class EndangeredAnimalTest {
     assertEquals("Raccoon", EndangeredAnimal.find(testEndangeredAnimal.getId()).getName());
   }
 
+  @Test
+  public void animal_instantiatesWithDefaultImage_true() {
+    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Fox", "Healthy", "Young");
+    testEndangeredAnimal.save();
+    assertEquals("https://i.imgur.com/rwXStQ0.jpg", testEndangeredAnimal.getImageUrl());
+  }
+
+  // @Test
+  // public void update_updatesImageUrlAttribute_true() {
+  //   EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Fox", "Healthy", "Young");
+  //   testEndangeredAnimal.save();
+  //   testEndangeredAnimal.updateName("Raccoon");
+  //   assertEquals("Raccoon", EndangeredAnimal.find(testEndangeredAnimal.getId()).getName());
+  // }
+
 }
