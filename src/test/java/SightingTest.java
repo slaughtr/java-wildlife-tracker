@@ -1,11 +1,14 @@
 import org.junit.*;
 import org.sql2o.*;
 import static org.junit.Assert.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.text.DateFormat;
+import java.sql.Timestamp;
 import java.util.Date;
+import java.text.DateFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SightingTest {
 
@@ -68,6 +71,19 @@ public class SightingTest {
   @Test
   public void find_returnsNullWhenNoAnimalFound_null() {
     assertTrue(Animal.find(999) == null);
+  }
+
+  @Test
+  public void save_savesLastSightingTimeStampCorrectly_true() {
+    Animal testAnimal = new Animal("Deer");
+    testAnimal.save();
+    Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese");
+    testSighting.save();
+    Timestamp testSightingLastSighting = Sighting.find(testSighting.getId()).getLastSighting();
+    Timestamp rightNow = new Timestamp(new Date().getTime());
+    System.out.println(testSightingLastSighting);
+    System.out.println(rightNow);
+    assertEquals(DateFormat.getDateTimeInstance().format(rightNow), DateFormat.getDateTimeInstance().format(testSightingLastSighting));
   }
 
 }
