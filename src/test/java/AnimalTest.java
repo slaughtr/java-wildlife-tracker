@@ -92,4 +92,19 @@ public class AnimalTest {
     assertTrue(Animal.find(999) == null);
   }
 
+  @Test
+  public void animal_instantiatesWithDefaultImage_true() {
+    Animal testAnimal = new Animal("Fox", "Healthy", "Young");
+    testAnimal.save();
+    assertEquals("https://i.imgur.com/rwXStQ0.jpg", testAnimal.getImageUrl());
+  }
+
+  @Test
+  public void update_updatesImageUrlAttribute_true() {
+    Animal testAnimal = new Animal("Fox", "Healthy", "Young");
+    testAnimal.save();
+    testAnimal.updateImageUrl("dog");
+    assertEquals("dog", Animal.find(testAnimal.getId()).getImageUrl());
+  }
+
 }

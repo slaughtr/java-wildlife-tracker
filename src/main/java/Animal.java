@@ -9,7 +9,6 @@ public class Animal extends Creature {
     this.id = id;
     this.health = health;
     this.age = age;
-    this.imageUrl = "https://i.imgur.com/rwXStQ0.jpg";
   }
 
 
@@ -33,7 +32,6 @@ public class Animal extends Creature {
       con.createQuery(sql)
       .addParameter("id", id)
       .addParameter("name", name)
-      .addColumnMapping("image_url", "imageUrl")
       .executeUpdate();
     }
   }
@@ -45,38 +43,34 @@ public class Animal extends Creature {
       con.createQuery(sql)
       .addParameter("age", age)
       .addParameter("id", id)
-      .addColumnMapping("image_url", "imageUrl")
       .executeUpdate();
     }
   }
 
   public void updateHealth(String health) {
-      try(Connection con = DB.sql2o.open()) {
-        String sql = "UPDATE animals SET health=:health WHERE id=:id;";
-        con.createQuery(sql)
-        .addParameter("id", id)
-        .addColumnMapping("image_url", "imageUrl")
-        .addParameter("health", health)
-        .executeUpdate();
-      }
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE animals SET health=:health WHERE id=:id;";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .addParameter("health", health)
+      .executeUpdate();
     }
+  }
 
-    public void updateImageUrl(String name) {
-      try(Connection con = DB.sql2o.open()) {
-        String sql = "UPDATE animals SET image_url=:imageUrl WHERE id=:id;";
-        con.createQuery(sql)
-        .addParameter("id", id)
-        .addColumnMapping("image_url", "imageUrl")
-        .addParameter("image_url", imageUrl)
-        .executeUpdate();
-      }
+  public void updateImageUrl(String imageUrl) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE animals SET image_url=:image_url WHERE id=:id;";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .addParameter("image_url", imageUrl)
+      .executeUpdate();
     }
+  }
 
   public static List<Animal> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM animals;";
       return con.createQuery(sql)
-      .addColumnMapping("image_url", "imageUrl")
       .executeAndFetch(Animal.class);
     }
   }
@@ -85,7 +79,6 @@ public class Animal extends Creature {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM animals WHERE id=:id;";
       Animal animal = con.createQuery(sql)
-      .addColumnMapping("image_url", "imageUrl")
       .addParameter("id", id)
       .executeAndFetchFirst(Animal.class);
       return animal;
@@ -96,7 +89,6 @@ public class Animal extends Creature {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO animals (name) VALUES (:name);";
       this.id = (int) con.createQuery(sql, true)
-      .addColumnMapping("image_url", "imageUrl")
       .addParameter("name", this.name)
       .executeUpdate()
       .getKey();
@@ -107,7 +99,6 @@ public class Animal extends Creature {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM animals WHERE id=:id;";
       con.createQuery(sql)
-      .addColumnMapping("image_url", "imageUrl")
       .addParameter("id", id)
       .executeUpdate();
     }

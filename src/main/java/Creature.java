@@ -14,7 +14,7 @@ public abstract class Creature {
   public boolean endangered;
   public String health;
   public String age;
-  public String imageUrl;
+  public String image_url="https://i.imgur.com/rwXStQ0.jpg";
 
   //TODO: what do I do with these constants?
   public static final String HEALTH_ILL = "ill";
@@ -42,7 +42,7 @@ public abstract class Creature {
     }
 
     public String getImageUrl() {
-      return imageUrl;
+      return image_url;
     }
 
 }
