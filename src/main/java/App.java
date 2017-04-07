@@ -11,6 +11,8 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
+    //TODO: MAKE THIS LESS FRUSTRATING
+
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("animals", Animal.all());

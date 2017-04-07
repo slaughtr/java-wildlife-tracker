@@ -32,13 +32,26 @@ public class Sighting {
     return ranger_name;
   }
 
-  @Override
-  public boolean equals(Object otherSighting) {
-    if(!(otherSighting instanceof Sighting)) {
-      return false;
-    } else {
-      Sighting newSighting = (Sighting) otherSighting;
-      return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
+  public static List<Sighting> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sightings;";
+      return con.createQuery(sql)
+        .throwOnMappingFailure(false)
+        .executeAndFetch(Sighting.class);
+    }
+  }
+
+  //TODO: ADD UPDATE, DELETE
+
+  public static Sighting find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sightings WHERE id=:id;";
+      Sighting sighting = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Sighting.class);
+      return sighting;
+    } catch (IndexOutOfBoundsException exception) {
+      return null;
     }
   }
 
@@ -55,24 +68,13 @@ public class Sighting {
     }
   }
 
-  public static List<Sighting> all() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM sightings;";
-      return con.createQuery(sql)
-        .throwOnMappingFailure(false)
-        .executeAndFetch(Sighting.class);
-    }
-  }
-
-  public static Sighting find(int id) {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM sightings WHERE id=:id;";
-      Sighting sighting = con.createQuery(sql)
-        .addParameter("id", id)
-        .executeAndFetchFirst(Sighting.class);
-      return sighting;
-    } catch (IndexOutOfBoundsException exception) {
-      return null;
+  @Override
+  public boolean equals(Object otherSighting) {
+    if(!(otherSighting instanceof Sighting)) {
+      return false;
+    } else {
+      Sighting newSighting = (Sighting) otherSighting;
+      return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
     }
   }
 
