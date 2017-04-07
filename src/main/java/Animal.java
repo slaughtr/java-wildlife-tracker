@@ -4,9 +4,11 @@ import java.util.List;
 
 public class Animal extends Creature {
 
-  public Animal(String name) {
+  public Animal(String name, String health, String age) {
     this.name = name;
     this.id = id;
+    this.health = health;
+    this.age = age;
   }
 
 

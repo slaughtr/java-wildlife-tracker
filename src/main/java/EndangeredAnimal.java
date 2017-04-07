@@ -9,16 +9,7 @@ public class EndangeredAnimal extends Creature {
     this.id = id;
     this.health = health;
     this.age = age;
-  }
-
-  public void updateHealth(String health) {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE endangered_animals SET health=:health WHERE id=:id;";
-      con.createQuery(sql)
-      .addParameter("id", id)
-      .addParameter("health", health)
-      .executeUpdate();
-    }
+    this.endangered = true;
   }
 
   public void updateAge(String age) {
