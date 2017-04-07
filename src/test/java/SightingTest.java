@@ -79,8 +79,9 @@ public class SightingTest {
     testAnimal.save();
     Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese");
     testSighting.save();
-    String testSightingLastSighting = Sighting.find(testSighting.getId()).getLastSighting().substring(0, 15);
-    String rightNow = new Timestamp(new Date().getTime()).toString().substring(0, 15);
+    String testSightingLastSighting = Sighting.find(testSighting.getId()).getLastSighting();
+    System.out.println(testSightingLastSighting);
+    String rightNow = new Timestamp(new Date().getTime()).toString().substring(0, 16);
     System.out.println(testSightingLastSighting);
     System.out.println(rightNow);
     assertEquals(testSightingLastSighting, rightNow);

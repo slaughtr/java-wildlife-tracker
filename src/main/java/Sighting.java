@@ -39,7 +39,7 @@ public class Sighting {
 
   public String getLastSighting() {
     String lastSighting = last_sighting.toString();
-      return lastSighting; //TODO: figure out how to make this lastSighting instead
+      return lastSighting.substring(0, 16); //TODO: figure out how to make this lastSighting instead
     }
 
 
