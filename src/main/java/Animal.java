@@ -22,6 +22,10 @@ public class Animal extends Creature {
     }
   }
 
+  public int getNumberOfSightings() {
+    return getSightings().size();
+  }
+
   public void updateName(String name) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "UPDATE animals SET name=:name WHERE id=:id;";

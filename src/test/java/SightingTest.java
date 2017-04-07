@@ -19,7 +19,7 @@ public class SightingTest {
   public void sighting_instantiatesCorrectly_true() {
     Animal testAnimal = new Animal("Deer", "healthy", "young");
     testAnimal.save();
-    Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
+    Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery", testAnimal.getName());
     assertEquals(true, testSighting instanceof Sighting);
   }
 
@@ -27,8 +27,8 @@ public class SightingTest {
   public void equals_returnsTrueIfLocationAndDescriptionAreSame_true() {
     Animal testAnimal = new Animal("Deer", "healthy", "young");
     testAnimal.save();
-    Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
-    Sighting anotherSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
+    Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery", testAnimal.getName());
+    Sighting anotherSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery", testAnimal.getName());
     assertTrue(testSighting.equals(anotherSighting));
   }
 
@@ -36,7 +36,7 @@ public class SightingTest {
   public void save_insertsObjectIntoDatabase_Sighting() {
     Animal testAnimal = new Animal("Deer", "healthy", "young");
     testAnimal.save();
-    Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
+    Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery", testAnimal.getName());
     testSighting.save();
     assertEquals(true, Sighting.all().get(0).equals(testSighting));
   }
@@ -45,11 +45,11 @@ public class SightingTest {
   public void all_returnsAllInstancesOfSighting_true() {
     Animal testAnimal = new Animal("Deer", "healthy", "young");
     testAnimal.save();
-    Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
+    Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery", testAnimal.getName());
     testSighting.save();
     Animal secondTestAnimal = new Animal("Badger", "ill", "young");
     secondTestAnimal.save();
-    Sighting secondTestSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese");
+    Sighting secondTestSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese", secondTestAnimal.getName());
     secondTestSighting.save();
     assertEquals(true, Sighting.all().get(0).equals(testSighting));
     assertEquals(true, Sighting.all().get(1).equals(secondTestSighting));
@@ -59,11 +59,11 @@ public class SightingTest {
   public void find_returnsSightingWithSameId_secondSighting() {
     Animal testAnimal = new Animal("Deer", "healthy", "young");
     testAnimal.save();
-    Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery");
+    Sighting testSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Avery", testAnimal.getName());
     testSighting.save();
     Animal secondTestAnimal = new Animal("Badger", "ill", "young");
     secondTestAnimal.save();
-    Sighting secondTestSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese");
+    Sighting secondTestSighting = new Sighting (testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese", secondTestAnimal.getName());
     secondTestSighting.save();
     assertEquals(Sighting.find(secondTestSighting.getId()), secondTestSighting);
   }
@@ -77,7 +77,7 @@ public class SightingTest {
   public void save_savesLastSightingTimeStampCorrectly_true() {
     Animal testAnimal = new Animal("Deer", "healthy", "young");
     testAnimal.save();
-    Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese");
+    Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese", testAnimal.getName());
     testSighting.save();
     String testSightingLastSighting = Sighting.find(testSighting.getId()).getLastSighting();
     System.out.println(testSightingLastSighting);
