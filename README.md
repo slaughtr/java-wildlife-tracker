@@ -21,6 +21,13 @@ To create the necessary databases, launch postgres, then psql, and run the follo
 * `CREATE TABLE sightings_animals (id serial PRIMARY KEY, animal_id int, sighting_id int);`
 * `CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker;`
 
+###TODO
+
+* Add forms to be able to add rangers, stations, locations, animals, endangered animals, sightings.
+* In animals/endangered animals, be able to add picture.
+* Use the join table.
+* Code cleanup and website styling issues (bad UL placement, etc)
+
 ### License
 
 Copyright (c) 2017 **_MIT License_**
