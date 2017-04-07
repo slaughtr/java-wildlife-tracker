@@ -39,6 +39,10 @@ public class Sighting {
     return ranger_name;
   }
 
+  public String getAnimalName() {
+    return animal_name;
+  }
+
   public String getLastSighting() {
     String lastSighting = last_sighting.toString();
       return lastSighting.substring(0, 16); //TODO: figure out how to make this lastSighting instead

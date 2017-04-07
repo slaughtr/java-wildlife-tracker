@@ -82,9 +82,16 @@ public class SightingTest {
     String testSightingLastSighting = Sighting.find(testSighting.getId()).getLastSighting();
     System.out.println(testSightingLastSighting);
     String rightNow = new Timestamp(new Date().getTime()).toString().substring(0, 16);
-    System.out.println(testSightingLastSighting);
-    System.out.println(rightNow);
     assertEquals(testSightingLastSighting, rightNow);
+  }
+
+  @Test
+  public void getAnimalName_returnsProperAnimalName_true() {
+    Animal testAnimal = new Animal("Deer", "healthy", "young");
+    testAnimal.save();
+    Sighting testSighting = new Sighting(testAnimal.getId(), "45.472428, -121.946466", "Ranger Reese", testAnimal.getName());
+    testSighting.save();
+    assertEquals("Deer", testSighting.getAnimalName());
   }
 
 }
