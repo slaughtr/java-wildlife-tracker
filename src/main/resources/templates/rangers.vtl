@@ -1,0 +1,38 @@
+<!-- begin rangers.vtl -->
+
+<div class="container">
+  <div class="well well-sm">
+    <strong>Display</strong>
+    <div class="btn-group">
+      <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+      </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+        class="glyphicon glyphicon-th"></span>Grid</a>
+      </div>
+    </div>
+    #foreach ($ranger in $rangers)
+    <div id="products" class="row list-group">
+      <div class="item  col-xs-4 col-lg-4">
+        <div class="thumbnail">
+          <img class="group list-group-image" src="https://static4.fjcdn.com/comments/Cat+race+ranger+trying+to+regain+memories+not+from+d+amp+d+planet+_ad046ce96a5ddd8411d999e7b36ae87a.png" alt="" />
+          <div class="caption">
+            <h4 class="group inner list-group-item-heading">
+              $ranger.getName()</h4>
+              <p class="group inner list-group-item-text">
+                You can contact Ranger $ranger.getName() at their email: $ranger.getEmail()</p>
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <p class="lead">
+                      $stations.find($ranger.getStationId()).getName()</p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                      <a class="btn btn-success" href="/rangers/$ranger.getId()">More info</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          #end
+        </div>
+
+<!-- end rangers.vtl -->

@@ -1,22 +1,25 @@
 <!-- begin layout.vtl -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript" src="../js/navbar.js"></script>
 <link rel="stylesheet" href="../css/navbar.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="../js/gridlist.js"></script>
+<link rel="stylesheet" href="../css/gridlist.css">
 <!-- navbar -->
 <div id="wrapper">
   <nav role="navigation" id="access">
     <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
     <ul id="menu">
-      <li class="active"><a class="icon-home" href="#accueil">Home</a></li><!-- whitespace
-                --><li><a class="icon-group" href="#services">Rangers</a></li><!-- whitespace
-                --><li><a class="icon-picture" href="#portfolio">Stations</a></li><!-- whitespace
-              --><li><a class="icon-leaf" href="#contact">Locations</a></li><!-- whitespace
-            --><li><a class="icon-envelope-alt" href="#contact">Animals</a></li><!-- whitespace
-            --><li><a class="icon-envelope-alt" href="#contact">Sightings</a></li>
+      <li class="active"><a class="icon-home" href="/">Home</a></li><!-- whitespace
+      --><li><a class="icon-group" href="/rangers">Rangers</a></li><!-- whitespace
+      --><li><a class="icon-picture" href="/stations">Stations</a></li><!-- whitespace
+      --><li><a class="icon-leaf" href="/locations">Locations</a></li><!-- whitespace
+      --><li><a class="icon-envelope-alt" href="/animals">Animals</a></li><!-- whitespace
+      --><li><a class="icon-envelope-alt" href="/sightings">Sightings</a></li>
           </ul>
       </nav>
 </div>
 <!-- end navbar -->
 
+#parse ($template)
 
 <!-- end layout.vtl -->
