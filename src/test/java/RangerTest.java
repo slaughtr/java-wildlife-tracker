@@ -21,7 +21,7 @@ public class RangerTest {
   }
 
   @Test
-  public void getName_rangerInstantiatesWithName_Deer() {
+  public void getName_rangerInstantiatesWithName_true() {
     Ranger testRanger = new Ranger("Ranger Smith", "ranger.smith@parks.com", 1);
     assertEquals("Ranger Smith", testRanger.getName());
   }

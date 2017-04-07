@@ -49,21 +49,21 @@ public class Station {
     }
   }
 
-  public static List<Location> all() {
+  public static List<Station> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM stations;";
       return con.createQuery(sql)
-      .executeAndFetch(Location.class);
+      .executeAndFetch(Station.class);
     }
   }
 
-  public static Location find(int id) {
+  public static Station find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM stations WHERE id=:id;";
-      Location animal = con.createQuery(sql)
+      Station station = con.createQuery(sql)
       .addParameter("id", id)
-      .executeAndFetchFirst(Location.class);
-      return animal;
+      .executeAndFetchFirst(Station.class);
+      return station;
     }
   }
 
@@ -89,12 +89,12 @@ public class Station {
 
 
   @Override
-  public boolean equals(Object otherLocation) {
-    if(!(otherLocation instanceof Location)) {
+  public boolean equals(Object otherStation) {
+    if(!(otherStation instanceof Station)) {
       return false;
     } else {
-      Location newLocation = (Location) otherLocation;
-      return this.getName().equals(newLocation.getName());
+      Station newStation = (Station) otherStation;
+      return this.getName().equals(newStation.getName());
     }
   }
 

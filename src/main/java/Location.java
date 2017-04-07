@@ -45,10 +45,10 @@ public class Location {
   public static Location find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM locations WHERE id=:id;";
-      Location animal = con.createQuery(sql)
+      Location location = con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Location.class);
-      return animal;
+      return location;
     }
   }
 

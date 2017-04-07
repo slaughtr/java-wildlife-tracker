@@ -21,7 +21,7 @@ public class LocationTest {
   }
 
   @Test
-  public void getName_locationInstantiatesWithName_Deer() {
+  public void getName_locationInstantiatesWithName_true() {
     Location testLocation = new Location("Yosemite Park");
     assertEquals("Yosemite Park", testLocation.getName());
   }
