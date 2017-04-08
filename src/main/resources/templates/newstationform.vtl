@@ -1,0 +1,15 @@
+<form action="/addcontent/station/new" method="post">
+  <label>Station Name</label>
+  <input type="text" name="name" required>
+  <label>Station Coordinates (Lat,Lon)</label>
+  <input type="text" name="coordinates" required>
+  <label>Station Location</label>
+  <select name="location" required>
+    #foreach ($location in $locations)
+    <option value="$location.getId()">$location.getName()</option>
+    #end
+  </select>
+
+  <button type="submit">Add Station</button>
+
+</form>

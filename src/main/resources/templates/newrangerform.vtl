@@ -1,0 +1,15 @@
+<form action="/addcontent/ranger/new" method="post">
+  <label>Ranger Name</label>
+  <input type="text" name="name" required>
+  <label>Ranger Email</label>
+  <input type="text" name="email" required>
+  <label>Assigned Ranger Station</label>
+  <select name="station" required>
+    #foreach ($station in $stations)
+    <option value="$station.getId()">$station.getName()</option>
+    #end
+  </select>
+
+  <button type="submit">Add Ranger</button>
+
+</form>

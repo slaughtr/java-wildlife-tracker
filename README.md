@@ -27,6 +27,7 @@ To create the necessary databases, launch postgres, then psql, and run the follo
 * In animals/endangered animals, be able to add picture.
 * Use the join table.
 * Code cleanup and website styling issues (bad UL placement, etc)
+* Add exception catching
 
 ### License
 

@@ -1,0 +1,20 @@
+<form action="/addcontent/sighting/new" method="post">
+  <label>Animal Name</label>
+  <select name="animalName" required>
+    #foreach ($animal in $animals)
+    <option value="$animal.getId()">$animal.getName()</option>
+    #end
+  </select>
+  <select name="rangerName" required>
+    #foreach ($ranger in $rangers)
+    <option value="$ranger.getId()">$ranger.getName()</option>
+    #end
+  </select>
+  <select name="locationName" required>
+    #foreach ($location in $locations)
+    <option value="$location.getId()">$location.getName()</option>
+    #end
+  </select>
+  <button type="submit">Add Sighting</button>
+
+</form>

@@ -239,37 +239,55 @@ public class App {
 
     get("/addcontent/ranger", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/addcontent.vtl");
+      model.put("stations", Station.all());
+      model.put("template", "templates/newrangerform.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/addcontent/station", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/addcontent.vtl");
+      model.put("locations", Location.all());
+      model.put("template", "templates/newstationform.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/addcontent/location", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/addcontent.vtl");
+      model.put("template", "templates/newlocationform.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/addcontent/animal", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/addcontent.vtl");
+      model.put("creature", Creature.class);
+      model.put("template", "templates/newanimalform.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addcontent/animal/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("creature", Creature.class);
+      model.put("template", "templates/newanimalform.vtl");
+      response.redirect(request.headers("referer"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/addcontent/endangeredanimal", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/addcontent.vtl");
+      model.put("creature", Creature.class);
+      model.put("template", "templates/newendangeredanimalform.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/addcontent/sighting", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/addcontent.vtl");
+      List<Object> allAnimals = new ArrayList<Object>();
+      allAnimals.addAll(Animal.all());
+      allAnimals.addAll(EndangeredAnimal.all());
+      model.put("animals", allAnimals);
+      model.put("rangers", Ranger.all());
+      model.put("locations", Location.all());
+      model.put("template", "templates/newsightingform.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
