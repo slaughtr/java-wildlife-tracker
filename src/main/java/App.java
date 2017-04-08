@@ -264,14 +264,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/addcontent/animal/new", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("creature", Creature.class);
-      model.put("template", "templates/newanimalform.vtl");
-      response.redirect(request.headers("referer"));
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
     get("/addcontent/endangeredanimal", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("creature", Creature.class);
@@ -288,6 +280,56 @@ public class App {
       model.put("rangers", Ranger.all());
       model.put("locations", Location.all());
       model.put("template", "templates/newsightingform.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addcontent/ranger/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      response.redirect(request.headers("referer"));
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addcontent/station/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      response.redirect(request.headers("referer"));
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addcontent/location/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      response.redirect(request.headers("referer"));
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addcontent/animal/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      response.redirect(request.headers("referer"));
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addcontent/animal/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      response.redirect(request.headers("referer"));
+
+      response.redirect(request.headers("referer"));
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addcontent/endangeredanimal/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      response.redirect(request.headers("referer"));
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/addcontent/sighting/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      response.redirect(request.headers("referer"));
+
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
