@@ -1,0 +1,40 @@
+<!-- begin sightings.vtl -->
+
+<div class="container">
+  <div class="well well-sm">
+    <strong>Display</strong>
+    <div class="btn-group">
+      <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+      </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+        class="glyphicon glyphicon-th"></span>Grid</a>
+      </div>
+    </div>
+    #foreach ($sighting in $sightings)
+    <div id="products" class="row list-group">
+      <div class="item  col-xs-4 col-lg-4">
+        <div class="thumbnail">
+          <img class="group list-group-image" src="http://www.clipartkid.com/images/149/looking-through-binoculars-clipart-panda-free-clipart-images-9Y8rge-clipart.gif" alt="" />
+          <div class="caption">
+            <h4 class="group inner list-group-item-heading">
+              $sighting.getAnimalName()</h4>
+              <p class="group inner list-group-item-text">
+                Seen @ $sighting.getLastSighting()</p>
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <p class="lead">
+                      $sighting.getAnimalHealth()<br>
+                      $sighting.getAnimalAge()
+                    </p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                      <a class="btn btn-success" href="/sightings/$sighting.getId()">More info</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          #end
+        </div>
+
+<!-- end sightings.vtl -->

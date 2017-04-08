@@ -1,0 +1,49 @@
+<!-- begin sighting.vtl -->
+<div class="container">
+  <div class="row">
+<div class="col-md-4">
+<h2>Animal: $sighting.getAnimalName()</h2>
+<h3>Seen on $sighting.getLastSighting()</h3>
+<h3>Location: $sighting.getLocationName()</h3>
+<h3>Ranger who saw $sighting.getAnimalName(): $sighting.getRangerName()</h3>
+</div>
+</div>
+
+
+
+
+
+
+  <!--
+  TODO: COME BACK TO THIS AND MAKE IT WORK
+  <style>
+  #map {
+  height: 400px;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+<h3>My Google Maps Demo</h3>
+<div id="map"></div>
+<script>
+function initMap() {
+var uluru = {#foreach ($station in $stations)
+#if ($station.getId() == $sighting.getStationId())
+lat: $station.getCoordinates().substring(0,8), lng: $station.getCoordinate().substring(10,21)};
+#end
+#end
+var map = new google.maps.Map(document.getElementById('map'), {
+zoom: 4,
+center: uluru
+});
+var marker = new google.maps.Marker({
+position: uluru,
+map: map
+});
+}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfhM1oRGrQZ9x5krOXUPU3jSKs0u7wOC8&callback=initMap">
+</script> -->
+<!-- end sighting.vtl -->

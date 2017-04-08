@@ -222,7 +222,7 @@ public class App {
 
     get("/sightings/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/station.vtl");
+      model.put("template", "templates/sighting.vtl");
       Sighting sighting = Sighting.find(Integer.parseInt(request.params("id")));
       model.put("sighting", sighting);
       model.put("rangers", Ranger.all());
