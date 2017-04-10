@@ -23,8 +23,7 @@ To create the necessary databases, launch postgres, then psql, and run the follo
 
 ###TODO
 
-* Add forms to be able to add rangers, stations, locations, animals, endangered animals, sightings.
-* In animals/endangered animals, be able to add picture.
+<!-- * In animals/endangered animals, be able to add picture in these forms. --><!-- this might not be 100% yet -->
 * Use the join table.
 * Code cleanup and website styling issues (bad UL placement, etc)
 * Add exception catching

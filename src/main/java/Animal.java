@@ -57,9 +57,10 @@ public class Animal extends Creature {
     }
   }
 
+//I HAVE NO IDEA WHY THIS ISN'T WORKING?!!?!??!?!?!?!?!?!?!?
   public void updateImageUrl(String imageUrl) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE animals SET image_url=:image_url WHERE id=:id;";
+      String sql = "UPDATE animals SET image_url=:imageUrl WHERE id=:id;";
       con.createQuery(sql)
       .addParameter("id", id)
       .addParameter("image_url", imageUrl)

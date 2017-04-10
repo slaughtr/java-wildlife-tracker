@@ -11,7 +11,7 @@
     </div>
     #foreach ($station in $stations)
     <div id="products" class="row list-group">
-      <div class="item  col-xs-4 col-lg-4">
+      <div class="item  col-xs-4 col-lg-4 list-group-item">
         <div class="thumbnail">
           <img class="group list-group-image" src="https://d30y9cdsu7xlg0.cloudfront.net/png/300799-200.png" alt="" />
           <div class="caption">
@@ -24,7 +24,7 @@
                     <p class="lead">
                       #foreach ($location in $locations)
                       #if ($location.getId() == $station.getLocationId())
-                      $location.getName()
+                      Location: $location.getName()
                       #end
                       <!-- $stations.find($station.getStationId()) I DON'T KNOW WHY THIS DOESN'T WORK?!-->
                       #end
