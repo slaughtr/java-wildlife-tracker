@@ -30,14 +30,29 @@ public class Sighting {
   }
 
   public String getAnimalHealth() {
+    try {
+      Animal.find(this.animal_id).getHealth();
+    } catch (NullPointerException exception) {
+      return EndangeredAnimal.find(this.animal_id).getHealth();
+    }
     return Animal.find(this.animal_id).getHealth();
   }
 
   public String getAnimalAge() {
+    try {
+      Animal.find(this.animal_id).getAge();
+    } catch (NullPointerException exception) {
+      return EndangeredAnimal.find(this.animal_id).getAge();
+    }
     return Animal.find(this.animal_id).getAge();
   }
 
   public String getAnimalName() {
+   try {
+     Animal.find(this.animal_id).getName();
+   } catch (NullPointerException exception) {
+     return EndangeredAnimal.find(this.animal_id).getName();
+   }
     return Animal.find(this.animal_id).getName();
   }
 

@@ -11,14 +11,18 @@
     </div>
     #foreach ($endangeredanimal in $endangeredanimals)
     <div id="products" class="row list-group">
-      <div class="item  col-xs-4 col-lg-4">
+      <div class="item  col-xs-4 col-lg-4 list-group-item">
         <div class="thumbnail">
           <img class="group list-group-image" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQK4UuNCXwnTPifEw0Bn-LvT35FUj_Alm8WW5dOeTkTgL2P87NoWQ" alt="" />
           <div class="caption">
             <h4 class="group inner list-group-item-heading">
               $endangeredanimal.getName()</h4>
               <p class="group inner list-group-item-text">
-                Seen $endangeredanimal.getNumberOfSightings() times!</p>
+                Seen $endangeredanimal.getNumberOfSightings() times!
+              #if ($endangeredanimal.getNumberOfSightings() >= 3)
+              <br>This animal may not be endangered anymore!
+              #end
+            </p>
                 <div class="row">
                   <div class="col-xs-12 col-md-6">
                     <p class="lead">

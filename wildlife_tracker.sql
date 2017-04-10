@@ -333,27 +333,6 @@ ALTER TABLE ONLY stations ALTER COLUMN id SET DEFAULT nextval('stations_id_seq':
 --
 
 COPY animals (id, name, health, age, image_url) FROM stdin;
-3	Rabbit	\N	\N	\N
-2	Deer	\N	\N	dag
-4	Deer	\N	\N	\N
-6	Raccoon	\N	\N	\N
-7	Fox	\N	\N	https://i.imgur.com/rwXStQ0.jpg
-8	Fox	\N	Adult	\N
-9	Deer	\N	\N	\N
-10	Black Bear	\N	\N	\N
-11	Fox	ill	\N	\N
-12	Fox	\N	\N	\N
-13	Deer	\N	\N	\N
-14	Black Bear	\N	\N	\N
-15	Deer	\N	\N	\N
-16	Deer	\N	\N	\N
-17	Deer	\N	\N	\N
-18	Deer	\N	\N	\N
-19	Badger	\N	\N	\N
-20	Deer	\N	\N	\N
-21	Deer	\N	\N	\N
-22	Deer	\N	\N	\N
-23	Badger	\N	\N	\N
 \.
 
 
@@ -361,7 +340,7 @@ COPY animals (id, name, health, age, image_url) FROM stdin;
 -- Name: animals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: slaughtr
 --
 
-SELECT pg_catalog.setval('animals_id_seq', 23, true);
+SELECT pg_catalog.setval('animals_id_seq', 44, true);
 
 
 --
@@ -369,17 +348,6 @@ SELECT pg_catalog.setval('animals_id_seq', 23, true);
 --
 
 COPY endangered_animals (id, name, health, age, image_url) FROM stdin;
-3	Brown bear	Healthy	Young	\N
-4	Raccoon	Healthy	Young	https://i.imgur.com/rwXStQ0.jpg
-5	Fox	Healthy	Young	https://i.imgur.com/rwXStQ0.jpg
-6	Badger	Okay	Adult	https://i.imgur.com/rwXStQ0.jpg
-7	Fox	Healthy	Young	https://i.imgur.com/rwXStQ0.jpg
-8	Fox	Healthy	Adult	https://i.imgur.com/rwXStQ0.jpg
-9	Fox	Healthy	Young	https://i.imgur.com/rwXStQ0.jpg
-10	Fox	Healthy	Young	https://i.imgur.com/rwXStQ0.jpg
-11	Badger	Okay	Adult	https://i.imgur.com/rwXStQ0.jpg
-12	Fox	ill	Young	https://i.imgur.com/rwXStQ0.jpg
-13	Fox	Healthy	Young	https://i.imgur.com/rwXStQ0.jpg
 \.
 
 
@@ -387,7 +355,7 @@ COPY endangered_animals (id, name, health, age, image_url) FROM stdin;
 -- Name: endangered_animals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: slaughtr
 --
 
-SELECT pg_catalog.setval('endangered_animals_id_seq', 13, true);
+SELECT pg_catalog.setval('endangered_animals_id_seq', 31, true);
 
 
 --
@@ -402,7 +370,7 @@ COPY locations (id, name) FROM stdin;
 -- Name: locations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: slaughtr
 --
 
-SELECT pg_catalog.setval('locations_id_seq', 1, false);
+SELECT pg_catalog.setval('locations_id_seq', 5, true);
 
 
 --
@@ -417,7 +385,7 @@ COPY rangers (id, name, email, station_id) FROM stdin;
 -- Name: rangers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: slaughtr
 --
 
-SELECT pg_catalog.setval('rangers_id_seq', 1, false);
+SELECT pg_catalog.setval('rangers_id_seq', 17, true);
 
 
 --
@@ -447,7 +415,7 @@ SELECT pg_catalog.setval('sightings_animals_id_seq', 1, false);
 -- Name: sightings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: slaughtr
 --
 
-SELECT pg_catalog.setval('sightings_id_seq', 1, false);
+SELECT pg_catalog.setval('sightings_id_seq', 20, true);
 
 
 --
@@ -462,7 +430,7 @@ COPY stations (id, name, coordinates, location_id) FROM stdin;
 -- Name: stations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: slaughtr
 --
 
-SELECT pg_catalog.setval('stations_id_seq', 1, false);
+SELECT pg_catalog.setval('stations_id_seq', 13, true);
 
 
 --

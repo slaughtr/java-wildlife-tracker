@@ -11,12 +11,12 @@
     </div>
     #foreach ($sighting in $sightings)
     <div id="products" class="row list-group">
-      <div class="item  col-xs-4 col-lg-4">
+      <div class="item  col-xs-4 col-lg-4 list-group-item">
         <div class="thumbnail">
           <img class="group list-group-image" src="http://www.clipartkid.com/images/149/looking-through-binoculars-clipart-panda-free-clipart-images-9Y8rge-clipart.gif" alt="" />
           <div class="caption">
             <h4 class="group inner list-group-item-heading">
-              $sighting.getAnimalName()</h4>
+              $sighting.getAnimalName()
               <p class="group inner list-group-item-text">
                 Seen @ $sighting.getLastSighting()</p>
                 <div class="row">

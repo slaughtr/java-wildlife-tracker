@@ -11,7 +11,7 @@
     </div>
     #foreach ($location in $locations)
     <div id="products" class="row list-group">
-      <div class="item  col-xs-4 col-lg-4">
+      <div class="item  col-xs-4 col-lg-4 list-group-item">
         <div class="thumbnail">
           <img class="group list-group-image" src="https://img.clipartfest.com/beae03cbbae1e0048c648e92f3784773_wilderness-clipart-wilderness-clipart-free_342-364.gif" alt="" />
           <div class="caption">
@@ -22,6 +22,7 @@
                 <div class="row">
                   <div class="col-xs-12 col-md-6">
                     <p class="lead">
+                      Stations in this location: 
                       #foreach ($station in $location.getLocationStations())
                       $station.getName()<br>
                       #end
